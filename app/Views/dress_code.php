@@ -84,16 +84,61 @@
 
     <div class="dress-code-container">
         <div class="content-block">
-            <span class="icon">✨</span>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 2rem; margin-bottom: 1.5rem;">
+                <img id="img-tuxedo" src="/assets/img/tuxedo.avif" alt="Costume" style="height: 100px; width: auto; object-fit: contain;">
+                <img id="img-robe" src="/assets/img/robe.avif" alt="Robe" style="height: 100px; width: auto; object-fit: contain;">
+            </div>
             <h1>Dress Code</h1>
             <p>Pour cette nuit magique sous les étoiles, nous vous invitons à revêtir votre plus belle tenue.</p>
             <p><strong>Tenue chic , noire et élégante.</strong></p>
             <p>Soyez éblouissants !</p>
+            <p>Petit rappel : la tenue exigée est noir uniquement. Si ce n’est pas respecté, il ne sera malheureusement pas possible de participer à l’événement.</p>
         </div>
     </div>
 
     <script src="/assets/js/stars.js" defer></script>
+    <script>
+        window.addEventListener('load', function () {
+            const images = [document.getElementById('img-tuxedo'), document.getElementById('img-robe')];
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
+            images.forEach(img => {
+                if (!img) return;
+                const processImage = function () {
+                    canvas.width = img.naturalWidth;
+                    canvas.height = img.naturalHeight;
+                    ctx.drawImage(img, 0, 0);
+
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imageData.data;
+
+                    for (let i = 0; i < data.length; i += 4) {
+                        const r = data[i];
+                        const g = data[i + 1];
+                        const b = data[i + 2];
+                        if (r > 200 && g > 200 && b > 200) {
+                            data[i + 3] = 0;
+                        }
+                    }
+                    ctx.putImageData(imageData, 0, 0);
+                    img.src = canvas.toDataURL('image/png');
+                    if (img.id === 'img-tuxedo') {
+                        // Micro halo blanc très léger pour détacher le noir sur noir
+                        img.style.filter = "drop-shadow(0 0 3px rgba(255, 255, 255, 0.4))";
+                    } else {
+                        img.style.filter = "invert(1) drop-shadow(0 0 10px rgba(255, 215, 0, 0.4))";
+                    }
+                };
+
+                if (img.complete && img.naturalHeight > 0) {
+                    processImage();
+                } else {
+                    img.onload = processImage;
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
