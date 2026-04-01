@@ -2,7 +2,8 @@ CREATE DATABASE IF NOT EXISTS wedding_db CHARACTER SET utf8mb4 COLLATE utf8mb4_u
 
 USE wedding_db;
 
--- Drop existing tables for a clean slate
+-- Drop existing tables for a clean slate (in correct reverse relationship order)
+DROP TABLE IF EXISTS companions;
 DROP TABLE IF EXISTS guests;
 DROP TABLE IF EXISTS users;
 
