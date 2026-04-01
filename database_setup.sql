@@ -21,10 +21,17 @@ CREATE TABLE guests (
     email VARCHAR(255) NULL,
     phone VARCHAR(20) NULL,
     is_attending BOOLEAN NOT NULL DEFAULT 0,
-    plus_one INT DEFAULT 0,
-    plus_one_age INT NULL,
     dietary_restrictions TEXT NULL,
     message TEXT NULL,
     is_approved BOOLEAN NOT NULL DEFAULT 0, -- 0=Pending, 1=Approved, 2=Rejected
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE companions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    guest_id INT NOT NULL,
+    first_name VARCHAR(100) NOT NULL,
+    age INT NULL,
+    children_menu BOOLEAN NOT NULL DEFAULT 0,
+    FOREIGN KEY (guest_id) REFERENCES guests(id) ON DELETE CASCADE
 );

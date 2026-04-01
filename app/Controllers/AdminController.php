@@ -19,7 +19,7 @@ class AdminController extends Controller
     public function index()
     {
         $guestModel = new Guest();
-        $guests = $guestModel->getAll();
+        $guests = $guestModel->getAllWithCompanions();
 
         // Calculate stats
         $totalGuests = 0;
@@ -40,7 +40,7 @@ class AdminController extends Controller
             // Approved
             elseif ($guest['is_approved'] == 1) {
                 if ($guest['is_attending']) {
-                    $totalAttending += (1 + intval($guest['plus_one']));
+                    $totalAttending += (1 + count($guest['companions'] ?? []));
                 }
             }
 
@@ -68,7 +68,7 @@ class AdminController extends Controller
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guest_id'])) {
             $guestId = $_POST['guest_id'];
             $guestModel = new Guest();
-            $guest = $guestModel->findById($guestId);
+            $guest = $guestModel->getWithCompanions($guestId);
 
             if ($guest && $guestModel->approve($guestId)) {
                 $this->sendDecisionEmail($guest, 'approved');
@@ -102,9 +102,22 @@ class AdminController extends Controller
 
         $bodyContent = "";
         if ($status === 'approved') {
+            $companionsBlock = "";
+            if (!empty($guest['companions'])) {
+                $companionsBlock = "<div style='margin-top: 20px; padding: 15px; background: rgba(0,0,0,0.03); border-radius: 5px;'>
+                                      <p style='margin-top:0;'><strong>Accompagnants enregistrés :</strong></p>
+                                      <ul style='margin-bottom:0;'>";
+                foreach ($guest['companions'] as $comp) {
+                    $child = !empty($comp['children_menu']) ? ' — Menu enfant' : '';
+                    $companionsBlock .= "<li>" . htmlspecialchars($comp['first_name']) . ", " . (int)$comp['age'] . " ans" . $child . "</li>";
+                }
+                $companionsBlock .= "</ul></div>";
+            }
+
             $bodyContent = "
                 <p>Nous sommes très heureux de vous compter parmi nous pour célébrer notre mariage 🎉<br>
                 Votre réponse via le formulaire a bien été enregistrée, et nous vous remercions sincèrement d’avoir confirmé votre présence.</p>
+                {$companionsBlock}
                 <p>Nous avons hâte de partager ce moment unique avec vous.<br>
                 N'hésitez pas à consulter régulièrement le site pour découvrir le programme et les détails du jour J.</p>
                 <p>Toutes les informations pratiques vous seront communiquées prochainement.</p>

@@ -90,7 +90,7 @@
         .timeline-time {
             font-family: 'Cinzel', serif;
             font-size: 1.5rem;
-            color: #ffd700;
+            color: #ffffff;
             margin-bottom: 0.5rem;
             font-weight: bold;
         }
@@ -167,7 +167,6 @@
                         <?php if (isset($event['address'])): ?>
                             <p class="timeline-address"
                                 style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 10px; font-size: 0.95rem; color: #fff;">
-                                <span style="font-size: 1.2rem; margin-right: 5px;">📍</span>
                                 <?php echo $event['address']; ?>
                             </p>
                         <?php endif; ?>

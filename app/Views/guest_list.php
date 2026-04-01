@@ -121,6 +121,11 @@
                         </div>
                         <div class="guest-name">
                             <?= htmlspecialchars($guest['first_name'] . ' ' . $guest['last_name']) ?>
+                            <?php if (!empty($guest['companions'])): ?>
+                                <div class="companions-list" style="margin-top: 5px; font-size: 0.85rem; color: #aaa;">
+                                    + <?= htmlspecialchars(implode(', ', array_column($guest['companions'], 'first_name'))) ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php endforeach; ?>

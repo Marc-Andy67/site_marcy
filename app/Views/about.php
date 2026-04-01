@@ -504,16 +504,13 @@
 
         <div class="story-section">
             <p class="story-text">
-                Marcy et Leroy se connaissent depuis plus de vingt ans, unis par une histoire qui semble avoir été
-                écrite dans le ciel. Originaires de la Martinique, ils ont toujours trouvé dans les étoiles un refuge
-                silencieux et rassurant, un langage secret qu’eux seuls semblaient comprendre. Lorsqu’ils se
-                retrouvaient, ils prenaient le temps de lever les yeux vers le ciel, fascinés par ces lumières
-                lointaines qui semblaient veiller sur leur amour naissant. Sous le manteau étoilé, leurs rêves se
-                confiaient, leurs promesses se formaient, comme si chaque étoile scellait un peu plus leur lien.
-                Aujourd’hui, ils souhaitent retourner en Martinique pour célébrer leur mariage, là où les nuits sont
-                encore plus lumineuses et où le ciel semble embrasser la mer. Ce mariage sera l’union de deux âmes
-                guidées par les étoiles, un amour constant, brillant et éternel, à l’image de ces astres qui ont
-                toujours illuminé leur histoire.
+                Marcy et Leroy se connaissent depuis toujours.
+
+Depuis l’enfance, ils étaient les meilleurs amis du monde, deux enfants de la Martinique qui grandissaient sous le même soleil, les yeux levés vers le même ciel étoilé.
+La vie les a séparés. Le temps a passé. Mais à l’adolescence, ils se sont retrouvés, et quelque chose s’est rallumé. Cette fois, c’était différent. C’était plus.
+Vingt ans plus tard, ils reviennent là où tout a commencé. Sous ce ciel martiniquais qui les a vus enfants, qui les a vus se retrouver, et qui les verra aujourd’hui se dire oui.
+Certaines histoires ne s’inventent pas.
+
             </p>
         </div>
 

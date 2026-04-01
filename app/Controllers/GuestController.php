@@ -26,44 +26,55 @@ class GuestController extends Controller
                 return;
             }
 
-            // Phone format validation (simple regex: allows digits, spaces, plus, dots, dashes, 10-20 chars)
             if (!preg_match('/^[0-9+\-\. ]{10,20}$/', $phone)) {
                 $this->view('rsvp', ['title' => 'RSVP - Marcy et Leroy', 'error' => 'Numéro de téléphone invalide.']);
                 return;
             }
 
             $email = trim($_POST['email']);
-            // Default to attending (1) as the radio button is removed and hidden input is 'yes'
             $isAttending = 1;
-
-            // Auto-refusal logic: If not attending, set to 'Refused' (2). Otherwise 'Pending' (0).
             $isApproved = $isAttending ? 0 : 2;
 
             $guestModel = new Guest();
-
-            // Check for existing email
             $existingGuest = $guestModel->findByEmail($email);
 
             if ($existingGuest) {
-                // Status 2 is "Refused". Allow them to update their submission.
                 if ($existingGuest['is_approved'] == 2) {
                     $updateData = [
                         'first_name' => $firstName,
                         'last_name' => $lastName,
                         'phone' => $phone,
                         'age' => (int) ($_POST['age'] ?? 0),
-                        'plus_one_age' => (int) ($_POST['plus_one_age'] ?? 0),
                         'is_attending' => $isAttending,
-                        'plus_one' => (int) ($_POST['plus_one'] ?? 0),
                         'dietary_restrictions' => trim($_POST['dietary_restrictions'] ?? ''),
                         'message' => trim($_POST['message'] ?? ''),
                         'is_approved' => $isApproved
                     ];
 
-                    // Update existing record
                     if ($guestModel->update($existingGuest['id'], $updateData)) {
-                        // Add email to notification data
+                        $db = \App\Core\Database::getInstance()->getConnection();
+                        $db->prepare("DELETE FROM companions WHERE guest_id = ?")->execute([$existingGuest['id']]);
+                        
+                        $validCompanions = [];
+                        if (!empty($_POST['companions']) && is_array($_POST['companions'])) {
+                            $companions = array_slice($_POST['companions'], 0, 3);
+                            $stmt = $db->prepare("INSERT INTO companions (guest_id, first_name, age, children_menu) VALUES (?, ?, ?, ?)");
+                            foreach ($companions as $companion) {
+                                if (!empty(trim($companion['first_name']))) {
+                                    $stmt->execute([
+                                        $existingGuest['id'],
+                                        trim($companion['first_name']),
+                                        (int)($companion['age'] ?? 0),
+                                        isset($companion['children_menu']) ? 1 : 0
+                                    ]);
+                                    $companion['children_menu'] = isset($companion['children_menu']) ? 1 : 0;
+                                    $validCompanions[] = $companion;
+                                }
+                            }
+                        }
+
                         $updateData['email'] = $email;
+                        $updateData['companions'] = $validCompanions;
                         $this->sendEmailNotification($updateData);
 
                         $this->view('rsvp_success', ['title' => 'Merci !', 'guest' => $updateData]);
@@ -84,16 +95,34 @@ class GuestController extends Controller
                 'email' => $email,
                 'phone' => $phone,
                 'age' => (int) ($_POST['age'] ?? 0),
-                'plus_one_age' => (int) ($_POST['plus_one_age'] ?? 0),
                 'is_attending' => $isAttending,
-                'plus_one' => (int) ($_POST['plus_one'] ?? 0),
                 'dietary_restrictions' => trim($_POST['dietary_restrictions'] ?? ''),
                 'message' => trim($_POST['message'] ?? ''),
                 'is_approved' => $isApproved
             ];
 
-            if ($guestModel->create($data)) {
-                // Send email notification
+            $guestId = $guestModel->create($data);
+            if ($guestId) {
+                $db = \App\Core\Database::getInstance()->getConnection();
+                $validCompanions = [];
+                if (!empty($_POST['companions']) && is_array($_POST['companions'])) {
+                    $companions = array_slice($_POST['companions'], 0, 3);
+                    $stmt = $db->prepare("INSERT INTO companions (guest_id, first_name, age, children_menu) VALUES (?, ?, ?, ?)");
+                    foreach ($companions as $companion) {
+                         if (!empty(trim($companion['first_name']))) {
+                            $stmt->execute([
+                                $guestId,
+                                trim($companion['first_name']),
+                                (int)($companion['age'] ?? 0),
+                                isset($companion['children_menu']) ? 1 : 0
+                            ]);
+                            $companion['children_menu'] = isset($companion['children_menu']) ? 1 : 0;
+                            $validCompanions[] = $companion;
+                        }
+                    }
+                }
+                
+                $data['companions'] = $validCompanions;
                 $this->sendEmailNotification($data);
 
                 $this->view('rsvp_success', ['title' => 'Merci !', 'guest' => $data]);
@@ -148,8 +177,21 @@ class GuestController extends Controller
                             <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: {$color};'>{$attendance}</td>
                         </tr>
                         <tr>
-                            <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #333;'>+1 Invités :</td>
-                            <td style='padding: 10px; border-bottom: 1px solid #eee; color: #555;'>{$data['plus_one']}</td>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #333;'>Accompagnants :</td>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; color: #555;'>";
+                            
+        if (!empty($data['companions'])) {
+            $list = [];
+            foreach ($data['companions'] as $comp) {
+                $child = !empty($comp['children_menu']) ? ' (Menu enfant)' : '';
+                $list[] = htmlspecialchars($comp['first_name']) . " (" . (int)$comp['age'] . " ans)" . $child;
+            }
+            $messageBody .= implode('<br>', $list);
+        } else {
+            $messageBody .= "Aucun";
+        }
+        
+        $messageBody .= "</td>
                         </tr>
                         <tr>
                             <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #333;'>Restrictions :</td>

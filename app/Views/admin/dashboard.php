@@ -240,7 +240,7 @@
                         <th>Téléphone</th>
                         <th>Présence</th>
                         <th class="col-status">Statut</th>
-                        <th>+1</th>
+                        <th>Accompagnants</th>
                         <th class="col-message">Message</th>
                         <th class="col-actions">Action</th>
                         <th class="col-date">Date</th>
@@ -281,7 +281,24 @@
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <?= $guest['plus_one'] ?>
+                                    <?php if (empty($guest['companions'])): ?>
+                                        <span style="color:rgba(255,255,255,0.3);">-</span>
+                                    <?php else: ?>
+                                        <div style="position:relative;">
+                                            <span style="cursor:pointer; display:inline-flex; align-items:center; gap:5px; background:rgba(255,255,255,0.05); padding:3px 10px; border-radius:15px; font-size:0.9rem;"
+                                                onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none';">
+                                                👤 <?= count($guest['companions']) ?>
+                                            </span>
+                                            <div style="display:none; position:absolute; top:110%; left:0; background:#1a1a1a; border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:10px; width:max-content; z-index:100; box-shadow:0 10px 25px rgba(0,0,0,0.8);">
+                                                <?php foreach ($guest['companions'] as $comp): ?>
+                                                    <div style="font-size:0.85rem; padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.05);">
+                                                        • <?= htmlspecialchars($comp['first_name']) ?>, <?= $comp['age'] ?> ans
+                                                        <?= !empty($comp['children_menu']) ? ' <br><span style="color:#ffd700;font-size:0.75rem;margin-left:10px;">✓ Menu enfant</span>' : '' ?>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
                                 </td>
                                 <td class="col-message" title="<?= htmlspecialchars($guest['message'] ?? '') ?>">
                                     <?= htmlspecialchars($guest['message'] ?? '-') ?>

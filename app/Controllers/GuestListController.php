@@ -19,7 +19,9 @@ class GuestListController extends Controller
     {
         $guestModel = new Guest();
         // Only fetch approved guests
-        $approvedGuests = $guestModel->getApproved();
+        $approvedGuests = array_filter($guestModel->getAllWithCompanions(), function($g) {
+            return $g['is_approved'] == 1 && $g['is_attending'] == 1;
+        });
 
         $this->view('guest_list', [
             'title' => 'Les Invités - Marcy et Leroy',

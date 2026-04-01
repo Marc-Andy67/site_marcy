@@ -62,35 +62,53 @@
                 <!-- Hidden Attending Input (Always Yes) -->
                 <input type="hidden" name="is_attending" value="yes">
 
-                <div class="form-group">
-                    <label>Accompagnant (1 maximum) :</label>
-                    <input type="number" name="plus_one" id="plus_one" min="0" max="1" value="0"
-                        oninput="if(this.value > 1) this.value = 1; if(this.value < 0) this.value = 0;">
-                </div>
-
-                <div class="form-group" id="plus_one_age_group" style="display: none;">
-                    <input type="number" name="plus_one_age" placeholder="Âge de l'accompagnant" min="1" max="100"
-                        style="width: 100%;" oninput="if(this.value > 100) this.value = 100;">
-                </div>
+                <div id="companions-wrapper"></div>
+                <button type="button" id="add-companion-btn" class="btn" style="width: 100%; margin-bottom: 2rem; font-size: 0.9rem;">+ Ajouter un accompagnant</button>
 
                 <script>
                     document.addEventListener('DOMContentLoaded', function () {
-                        var plusOneInput = document.getElementById('plus_one');
-                        var ageGroup = document.getElementById('plus_one_age_group');
+                        const wrapper = document.getElementById('companions-wrapper');
+                        const addBtn = document.getElementById('add-companion-btn');
+                        let companionIndex = 0;
 
-                        function toggleAgeInput() {
-                            if (plusOneInput.value > 0) {
-                                ageGroup.style.display = 'block';
+                        addBtn.addEventListener('click', function() {
+                            if (wrapper.children.length >= 3) return;
+                            
+                            const div = document.createElement('div');
+                            div.className = 'form-group companion-block';
+                            div.style.background = 'rgba(255,255,255,0.02)';
+                            div.style.padding = '15px';
+                            div.style.borderRadius = '5px';
+                            div.style.border = '1px solid rgba(255,255,255,0.2)';
+                            div.style.marginBottom = '15px';
+                            div.style.position = 'relative';
+
+                            div.innerHTML = `
+                                <h4 style="margin: 0 0 10px 0; font-family: var(--font-body); font-weight: normal; font-size: 1rem; color: var(--accent);">Accompagnant</h4>
+                                <button type="button" title="Retirer" style="position:absolute; top:12px; right:15px; background:transparent; border:none; color:rgba(255,80,80,0.8); font-size:1.2rem; cursor:pointer;" onclick="this.parentElement.remove(); checkCount();">✖</button>
+                                
+                                <div style="display:flex; flex-direction:column; gap:0.5rem;">
+                                    <input type="text" name="companions[${companionIndex}][first_name]" placeholder="Prénom" style="background: rgba(0,0,0,0.2);" required>
+                                    <input type="number" name="companions[${companionIndex}][age]" placeholder="Âge" min="1" max="100" style="background: rgba(0,0,0,0.2);" required oninput="if(this.value > 100) this.value = 100;">
+                                    <label style="font-size:0.9rem; margin-top:5px; display:flex; align-items:center; gap:8px; cursor:pointer;">
+                                        <input type="checkbox" name="companions[${companionIndex}][children_menu]" value="1" style="width:20px; height:20px; margin:0; cursor:pointer;">
+                                        <span>Menu enfant (moins de 12 ans)</span>
+                                    </label>
+                                </div>
+                            `;
+                            
+                            wrapper.appendChild(div);
+                            companionIndex++;
+                            checkCount();
+                        });
+
+                        window.checkCount = function() {
+                            if (wrapper.children.length >= 3) {
+                                addBtn.style.display = 'none';
                             } else {
-                                ageGroup.style.display = 'none';
+                                addBtn.style.display = 'inline-block';
                             }
-                        }
-
-                        // Run on load
-                        toggleAgeInput();
-
-                        // Run on input change
-                        plusOneInput.addEventListener('input', toggleAgeInput);
+                        };
                     });
                 </script>
 

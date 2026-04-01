@@ -66,17 +66,17 @@ body::before {
   background:
     radial-gradient(
       circle at 50% 30%,
-      rgba(10, 25, 60, 0.3) 0%,
+      rgba(10, 25, 60, 0.12) 0%,
       transparent 60%
     ),
     radial-gradient(
       circle at 20% 80%,
-      rgba(30, 10, 40, 0.2) 0%,
+      rgba(30, 10, 40, 0.08) 0%,
       transparent 50%
     ),
     radial-gradient(
       circle at 80% 20%,
-      rgba(15, 30, 50, 0.2) 0%,
+      rgba(15, 30, 50, 0.08) 0%,
       transparent 40%
     ),
     linear-gradient(135deg, #000000 0%, #050714 40%, #000000 100%);
@@ -93,17 +93,17 @@ body::after {
   background:
     radial-gradient(
       ellipse 60% 40% at 50% 50%,
-      rgba(20, 40, 80, 0.15) 0%,
-      rgba(40, 20, 60, 0.1) 40%,
+      rgba(20, 40, 80, 0.06) 0%,
+      rgba(40, 20, 60, 0.04) 40%,
       transparent 80%
     ),
     radial-gradient(
       circle at 70% 30%,
-      rgba(50, 75, 128, 0.05) 0%,
+      rgba(50, 75, 128, 0.02) 0%,
       transparent 30%
     );
   transform: rotate(-10deg);
-  animation: shimmer 15s ease-in-out infinite alternate;
+  animation: none;
   pointer-events: none;
 }
 .stars-layer-1 {
@@ -140,8 +140,8 @@ body::after {
     radial-gradient(1px 1px at 78% 28%, white, transparent),
     radial-gradient(1px 1px at 98% 8%, white, transparent);
   background-size: 25% 25%;
-  animation: twinkle 5s ease-in-out infinite;
-  opacity: 0.9;
+  animation: none;
+  opacity: 0.6;
 }
 .stars-layer-2 {
   position: fixed;
@@ -187,8 +187,8 @@ body::after {
       transparent
     );
   background-size: 15% 15%;
-  animation: twinkle 3s ease-in-out infinite 1.5s;
-  opacity: 0.7;
+  animation: none;
+  opacity: 0.45;
 }
 .stars-sparkle {
   position: fixed;
@@ -205,7 +205,7 @@ body::after {
     radial-gradient(3px 3px at 70% 40%, white, transparent),
     radial-gradient(2px 2px at 50% 50%, white, transparent);
   background-size: 60% 60%;
-  animation: twinkle 2s ease-in-out infinite 0.2s;
+  animation: none;
 }
 #starry-night {
   position: fixed;
