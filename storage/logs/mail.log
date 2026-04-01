@@ -658,3 +658,174 @@ Message : Ceci est un test reel via SMTP
         </body>
         </html>
         
+[2026-04-01 18:25:28] [SENT] TO: marcandy.p@hotmail.com | SUBJECT: Nouvelle RSVP : Test Test
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        </head>
+        <body style='margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;'>
+            <div style='max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px;'>
+                <div style='background-color: #1a1a1a; padding: 15px; border-radius: 8px 8px 0 0; text-align: center;'>
+                    <h1 style='color: #ffd700; margin: 0; font-size: 24px; font-family: "Playfair Display", serif;'>Nouvelle Réponse RSVP</h1>
+                </div>
+                
+                <div style='padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);'>
+                    <p style='font-size: 16px; margin-bottom: 20px; color: #555;'>Une nouvelle réponse vient d'arriver sur le site :</p>
+                    
+                    <table style='width: 100%; border-collapse: collapse; margin-bottom: 20px;'>
+                        <tr>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; width: 40%; font-weight: bold; color: #333;'>Nom :</td>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; color: #555;'>Test Test</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #333;'>Email :</td>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; color: #555;'>test@test1.com</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #333;'>Téléphone :</td>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; color: #555;'>0658979797</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #333;'>Présence :</td>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #28a745;'>OUI</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #333;'>+1 Invités :</td>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; color: #555;'>1</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #333;'>Restrictions :</td>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; color: #555;'>Régime Normal</td>
+                        </tr>
+                    </table>
+                    
+                    <div style='background-color: #f9f9f9; padding: 15px; border-left: 4px solid #ffd700; margin-top: 20px;'>
+                        <strong style='display: block; margin-bottom: 5px; color: #333;'>Message :</strong>
+                        <em style='color: #666;'>H</em>
+                    </div>
+                    
+                    <p style='text-align: center; margin-top: 30px; font-size: 12px; color: #aaa;'>
+                        Ceci est un message automatique envoyé depuis votre site Marcy & Leroy.
+                    </p>
+                </div>
+            </div>
+        </body>
+        </html>
+        
+[2026-04-01 19:11:51] [SENT] TO: marcy.pivert@gmail.com | SUBJECT: Nouvelle RSVP : t t
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        </head>
+        <body style='margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;'>
+            <div style='max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px;'>
+                <div style='background-color: #1a1a1a; padding: 15px; border-radius: 8px 8px 0 0; text-align: center;'>
+                    <h1 style='color: #ffd700; margin: 0; font-size: 24px; font-family: "Playfair Display", serif;'>Nouvelle Réponse RSVP</h1>
+                </div>
+                
+                <div style='padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);'>
+                    <p style='font-size: 16px; margin-bottom: 20px; color: #555;'>Une nouvelle réponse vient d'arriver sur le site :</p>
+                    
+                    <table style='width: 100%; border-collapse: collapse; margin-bottom: 20px;'>
+                        <tr>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; width: 40%; font-weight: bold; color: #333;'>Nom :</td>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; color: #555;'>t t</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #333;'>Email :</td>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; color: #555;'>t@r.com</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #333;'>Téléphone :</td>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; color: #555;'>0909090909</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #333;'>Présence :</td>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #28a745;'>OUI</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #333;'>+1 Invités :</td>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; color: #555;'>0</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #333;'>Restrictions :</td>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; color: #555;'>Régime Normal</td>
+                        </tr>
+                    </table>
+                    
+                    <div style='background-color: #f9f9f9; padding: 15px; border-left: 4px solid #ffd700; margin-top: 20px;'>
+                        <strong style='display: block; margin-bottom: 5px; color: #333;'>Message :</strong>
+                        <em style='color: #666;'>AZ</em>
+                    </div>
+                    
+                    <p style='text-align: center; margin-top: 30px; font-size: 12px; color: #aaa;'>
+                        Ceci est un message automatique envoyé depuis votre site Marcy & Leroy.
+                    </p>
+                </div>
+            </div>
+        </body>
+        </html>
+        
+[2026-04-01 19:19:04] [SENT] TO: marcy.pivert@gmail.com | SUBJECT: Nouvelle RSVP : MARCANDY ia pivert
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        </head>
+        <body style='margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;'>
+            <div style='max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px;'>
+                <div style='background-color: #1a1a1a; padding: 15px; border-radius: 8px 8px 0 0; text-align: center;'>
+                    <h1 style='color: #ffd700; margin: 0; font-size: 24px; font-family: "Playfair Display", serif;'>Nouvelle Réponse RSVP</h1>
+                </div>
+                
+                <div style='padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);'>
+                    <p style='font-size: 16px; margin-bottom: 20px; color: #555;'>Une nouvelle réponse vient d'arriver sur le site :</p>
+                    
+                    <table style='width: 100%; border-collapse: collapse; margin-bottom: 20px;'>
+                        <tr>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; width: 40%; font-weight: bold; color: #333;'>Nom :</td>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; color: #555;'>MARCANDY ia pivert</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #333;'>Email :</td>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; color: #555;'>marcandy.ia1@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #333;'>Téléphone :</td>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; color: #555;'>0680719464</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #333;'>Présence :</td>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #28a745;'>OUI</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #333;'>+1 Invités :</td>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; color: #555;'>0</td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; color: #333;'>Restrictions :</td>
+                            <td style='padding: 10px; border-bottom: 1px solid #eee; color: #555;'>Régime Normal</td>
+                        </tr>
+                    </table>
+                    
+                    <div style='background-color: #f9f9f9; padding: 15px; border-left: 4px solid #ffd700; margin-top: 20px;'>
+                        <strong style='display: block; margin-bottom: 5px; color: #333;'>Message :</strong>
+                        <em style='color: #666;'>BJR</em>
+                    </div>
+                    
+                    <p style='text-align: center; margin-top: 30px; font-size: 12px; color: #aaa;'>
+                        Ceci est un message automatique envoyé depuis votre site Marcy & Leroy.
+                    </p>
+                </div>
+            </div>
+        </body>
+        </html>
+        

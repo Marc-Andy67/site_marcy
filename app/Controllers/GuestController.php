@@ -107,7 +107,7 @@ class GuestController extends Controller
 
     private function sendEmailNotification($data)
     {
-        $to = 'marcandy.p@hotmail.com';
+        $to = 'marcy.pivert@gmail.com';
         $subject = "Nouvelle RSVP : {$data['first_name']} {$data['last_name']}";
 
         $attendance = $data['is_attending'] ? "OUI" : "NON";

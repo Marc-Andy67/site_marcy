@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         <?= $title ?>
     </title>
@@ -223,7 +223,7 @@
 
                 <div
                     style="background: white; padding: 15px; border-radius: 10px; display: inline-block; margin: 1rem auto;">
-                    <img src="/assets/img/qr_code_wero.jpg" alt="QR Code Wero" style="width: 200px; height: auto;">
+                    <img loading="lazy" src="/assets/img/qr_code_wero.jpg" alt="QR Code Wero" style="width: 200px; height: auto;">
                 </div>
 
                 <!-- Wero Link -->
@@ -248,7 +248,7 @@
                 <h3 class="card-title">L'Urne</h3>
                 <p>Une urne sera à votre disposition lors de la réception pour vos enveloppes et petits mots.</p>
                 <div style="margin-top: 1.5rem; display: flex; justify-content: center;">
-                    <img id="urne-img" src="/assets/img/urne.png" alt="Urne de mariage"
+                    <img loading="lazy" id="urne-img" src="/assets/img/urne.png" alt="Urne de mariage"
                         style="max-width: 250px; height: auto;">
                 </div>
             </div>
@@ -258,7 +258,7 @@
 
 
 
-    <script src="/assets/js/stars.js"></script>
+    <script src="/assets/js/stars.js" defer></script>
     <script>
         // Background removal for Urn
         window.addEventListener('load', function () {

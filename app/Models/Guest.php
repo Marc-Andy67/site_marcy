@@ -31,21 +31,20 @@ class Guest extends Model
 
     public function getAll()
     {
-        $stmt = $this->db->query("SELECT * FROM guests ORDER BY created_at DESC");
+        $stmt = $this->db->query("SELECT id, first_name, last_name, email, phone, is_attending, is_approved, plus_one, message, created_at FROM guests ORDER BY created_at DESC");
         return $stmt->fetchAll();
     }
 
     public function findByEmail($email)
     {
-        $stmt = $this->db->prepare("SELECT * FROM guests WHERE email = :email");
-        $stmt->execute([':email' => $email]);
+        $stmt = $this->db->prepare("SELECT id, first_name, last_name, email, phone, is_attending, is_approved, plus_one, message, created_at FROM guests WHERE email = :email");
         $stmt->execute([':email' => $email]);
         return $stmt->fetch();
     }
 
     public function findById($id)
     {
-        $stmt = $this->db->prepare("SELECT * FROM guests WHERE id = :id");
+        $stmt = $this->db->prepare("SELECT id, first_name, last_name, email, phone, is_attending, is_approved, plus_one, message, created_at FROM guests WHERE id = :id");
         $stmt->execute([':id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
@@ -58,7 +57,7 @@ class Guest extends Model
 
     public function getApproved()
     {
-        $stmt = $this->db->query("SELECT * FROM guests WHERE is_approved = 1 ORDER BY created_at DESC");
+        $stmt = $this->db->query("SELECT first_name, last_name FROM guests WHERE is_approved = 1 ORDER BY created_at DESC");
         return $stmt->fetchAll();
     }
 

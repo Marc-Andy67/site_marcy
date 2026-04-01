@@ -25,7 +25,7 @@ class Donation extends Model
 
     public function getAll()
     {
-        $sql = "SELECT * FROM donations ORDER BY created_at DESC";
+        $sql = "SELECT id, name, email, amount, message, payment_method, status, created_at FROM donations ORDER BY created_at DESC";
         return $this->db->query($sql)->fetchAll();
     }
 

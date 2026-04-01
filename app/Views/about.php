@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         <?= $title ?>
     </title>
@@ -392,7 +392,7 @@
         <div class="couple-grid">
             <div class="profile-card" data-name="Marcy" data-img="/assets/img/marcy.png">
                 <div class="profile-header">
-                    <img src="/assets/img/marcy.png" alt="Marcy" class="profile-img">
+                    <img loading="lazy" src="/assets/img/marcy.png" alt="Marcy" class="profile-img">
                 </div>
                 <h2 class="profile-name">Marcy</h2>
                 <div class="profile-desc-wrapper">
@@ -431,13 +431,13 @@
                     constante.
                 </div>
                 <div class="constellation-html" style="display:none;">
-                    <img src="/assets/img/constellation_gemini_v3.png" alt="Constellation Gémeaux"
+                    <img loading="lazy" src="/assets/img/constellation_gemini_v3.png" alt="Constellation Gémeaux"
                         style="width:100%; height:100%; filter: invert(1); mix-blend-mode: screen; opacity: 0.8;" />
                 </div>
             </div>
             <div class="profile-card" data-name="Leroy" data-img="/assets/img/leroy.jpg">
                 <div class="profile-header">
-                    <img src="/assets/img/leroy.jpg" alt="Leroy" class="profile-img">
+                    <img loading="lazy" src="/assets/img/leroy.jpg" alt="Leroy" class="profile-img">
                 </div>
                 <h2 class="profile-name">Leroy</h2>
                 <div class="profile-desc-wrapper">
@@ -494,7 +494,7 @@
                     militaire, fidèle et lumineux, tel un astre sûr dans la nuit.
                 </div>
                 <div class="constellation-html" style="display:none;">
-                    <img src="/assets/img/constellation_capricorn.png" alt="Constellation Capricorne"
+                    <img loading="lazy" src="/assets/img/constellation_capricorn.png" alt="Constellation Capricorne"
                         style="width:100%; height:100%; filter: invert(1); mix-blend-mode: screen; opacity: 0.8;" />
                 </div>
             </div>
@@ -530,8 +530,8 @@
         </div>
     </div>
 
-    <script src="/assets/js/stars.js"></script>
-    <script src="/assets/js/profile-modal.js"></script>
+    <script src="/assets/js/stars.js" defer></script>
+    <script src="/assets/js/profile-modal.js" defer></script>
 </body>
 
 </html>

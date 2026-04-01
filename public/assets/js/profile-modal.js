@@ -9,19 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
 
     function openModal(card) {
-        // Retrieve data from the card
         const name = card.getAttribute('data-name');
         const imgText = card.getAttribute('data-img');
         const fullDesc = card.querySelector('.full-content').innerHTML;
         const constellationHtml = card.querySelector('.constellation-html').innerHTML;
 
-        // Populate modal
         modalTitle.textContent = name;
-        modalImg.textContent = imgText;
+        
+        // Fix: Insert an actual img element instead of raw text
+        modalImg.innerHTML = `<img src="${imgText}" alt="${name}" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">`;
+        
         modalDesc.innerHTML = fullDesc;
         modalConstellation.innerHTML = constellationHtml;
-
-        // Show modal with animation
         modal.classList.add('active');
         body.style.overflow = 'hidden'; // Prevent background scrolling
     }
@@ -31,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
         body.style.overflow = '';
     }
 
-    // Event Listeners for Read More buttons
     readMoreBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             const card = e.target.closest('.profile-card');
@@ -39,19 +37,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Close button
     if (closeBtn) {
         closeBtn.addEventListener('click', closeModal);
     }
 
-    // Close on background click
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
             closeModal();
         }
     });
 
-    // Close on simple tap on background (sometimes click is tricky on mobile)
     modal.addEventListener('touchend', (e) => {
         if (e.target === modal) {
             e.preventDefault(); // Prevent ghost clicks

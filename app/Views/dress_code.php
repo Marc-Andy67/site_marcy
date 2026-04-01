@@ -12,13 +12,11 @@
     <style>
         body,
         html {
-            height: 100%;
             margin: 0;
             overflow-x: hidden;
             font-family: 'Montserrat', sans-serif;
             color: #dcdcdc;
             /* Silver text */
-            background-color: transparent;
         }
 
         .dress-code-container {
@@ -94,7 +92,7 @@
         </div>
     </div>
 
-    <script src="/assets/js/stars.js"></script>
+    <script src="/assets/js/stars.js" defer></script>
 
 </body>
 

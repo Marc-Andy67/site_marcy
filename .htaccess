@@ -1,0 +1,3 @@
+<FilesMatch "^(install\.php|fix_db_.*\.php|seed_.*\.php|\.bat)$">
+    Require all denied
+</FilesMatch>

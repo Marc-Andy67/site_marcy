@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?></title>
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400&display=swap"
@@ -177,7 +177,7 @@
         </div>
     </div>
 
-    <script src="/assets/js/stars.js"></script>
+    <script src="/assets/js/stars.js" defer></script>
 </body>
 
 </html>

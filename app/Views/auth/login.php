@@ -133,7 +133,7 @@
         <a href="/" class="back-link">Retour au site</a>
     </div>
 
-    <script src="/assets/js/stars.js"></script>
+    <script src="/assets/js/stars.js" defer></script>
 </body>
 
 </html>

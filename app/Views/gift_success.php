@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         <?= $title ?>
     </title>
@@ -32,7 +32,7 @@
             <a href="/" class="btn" style="margin-top: 2rem;">Retour à l'accueil</a>
         </div>
     </div>
-    <script src="/assets/js/stars.js"></script>
+    <script src="/assets/js/stars.js" defer></script>
 </body>
 
 </html>

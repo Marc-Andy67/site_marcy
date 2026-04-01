@@ -1,547 +1,484 @@
 @font-face {
-    font-family: 'Remington';
-    src: url('../fonts/Remington.otf') format('opentype'),
-        url('../fonts/Remington.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Remington";
+  src:
+    url("../fonts/Remington.otf") format("opentype"),
+    url("../fonts/Remington.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
-
 :root {
-    --bg-color: #050505;
-    /* Deep black/dark grey for better depth */
-    --text-primary: #E0E0E0;
-    /* Silver/White */
-    --text-silver: #C0C0C0;
-    /* Classic Silver */
-    --accent: #A9A9A9;
-    --font-heading: 'Cinzel', serif;
-    --font-body: 'Montserrat', sans-serif;
+  --bg-color: #050505;
+  --text-primary: #e0e0e0;
+  --text-silver: #c0c0c0;
+  --accent: #a9a9a9;
+  --font-heading: "Cinzel", serif;
+  --font-body: "Montserrat", sans-serif;
 }
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-/* ========================================
-   BACKGROUND ÉTOILÉ INSPIRÉ DE L'IMAGE
-   ======================================== */
-
 @keyframes twinkle {
-
-    0%,
-    100% {
-        opacity: 0.4;
-        transform: scale(0.8);
-    }
-
-    50% {
-        opacity: 1;
-        transform: scale(1.1);
-    }
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
 }
-
 @keyframes shimmer {
-    0% {
-        background-position: 0% 50%;
-        opacity: 0.6;
-    }
-
-    50% {
-        background-position: 100% 50%;
-        opacity: 0.8;
-    }
-
-    100% {
-        background-position: 0% 50%;
-        opacity: 0.6;
-    }
+  0% {
+    background-position: 0% 50%;
+    opacity: 0.6;
+  }
+  50% {
+    background-position: 100% 50%;
+    opacity: 0.8;
+  }
+  100% {
+    background-position: 0% 50%;
+    opacity: 0.6;
+  }
 }
-
+html, body {
+  overflow-x: hidden;
+}
 body {
-    background-color: #000000;
-    /* Pure black for depth */
-    position: relative;
-    margin: 0;
-    overflow-x: hidden;
-    font-family: var(--font-body);
-    color: var(--text-primary);
-    min-height: 100vh;
+  background-color: #000000;
+  position: relative;
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  min-height: 100vh;
 }
-
-/* Fond principal avec dégradé de voie lactée PLUS SOMBRE */
 body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -3;
-    background:
-        /* Nebuleuse bleue intense - reduced opacity */
-        radial-gradient(circle at 50% 30%, rgba(10, 25, 60, 0.3) 0%, transparent 60%),
-        /* Nebuleuse violette mystérieuse - reduced opacity */
-        radial-gradient(circle at 20% 80%, rgba(30, 10, 40, 0.2) 0%, transparent 50%),
-        /* Lueur centrale brillante - reduced opacity */
-        radial-gradient(circle at 80% 20%, rgba(15, 30, 50, 0.2) 0%, transparent 40%),
-        /* Fond profond - Darker gradient */
-        linear-gradient(135deg, #000000 0%, #050714 40%, #000000 100%);
-    filter: blur(2px);
-    /* Adoucit pour l'effet gaz */
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(10, 25, 60, 0.3) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(30, 10, 40, 0.2) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(15, 30, 50, 0.2) 0%,
+      transparent 40%
+    ),
+    linear-gradient(135deg, #000000 0%, #050714 40%, #000000 100%);
+  filter: blur(2px);
 }
-
-/* Couche de voie lactée dynamique - PLUS SUBTILE */
 body::after {
-    content: '';
-    position: fixed;
-    top: -20%;
-    left: -20%;
-    width: 140%;
-    height: 140%;
-    z-index: -2;
-    background:
-        radial-gradient(ellipse 60% 40% at 50% 50%,
-            rgba(20, 40, 80, 0.15) 0%,
-            rgba(40, 20, 60, 0.1) 40%,
-            transparent 80%),
-        radial-gradient(circle at 70% 30%, rgba(50, 75, 128, 0.05) 0%, transparent 30%);
-    transform: rotate(-10deg);
-    animation: shimmer 15s ease-in-out infinite alternate;
-    pointer-events: none;
+  content: "";
+  position: fixed;
+  top: -20%;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  z-index: -2;
+  background:
+    radial-gradient(
+      ellipse 60% 40% at 50% 50%,
+      rgba(20, 40, 80, 0.15) 0%,
+      rgba(40, 20, 60, 0.1) 40%,
+      transparent 80%
+    ),
+    radial-gradient(
+      circle at 70% 30%,
+      rgba(50, 75, 128, 0.05) 0%,
+      transparent 30%
+    );
+  transform: rotate(-10deg);
+  animation: shimmer 15s ease-in-out infinite alternate;
+  pointer-events: none;
 }
-
-/* Étoiles scintillantes - couche 1 (ULTRA DENSE) */
 .stars-layer-1 {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-image:
-        radial-gradient(1.5px 1.5px at 5% 5%, white, transparent),
-        radial-gradient(1.5px 1.5px at 15% 15%, white, transparent),
-        radial-gradient(1.5px 1.5px at 25% 5%, white, transparent),
-        radial-gradient(1.5px 1.5px at 35% 25%, white, transparent),
-        radial-gradient(1.5px 1.5px at 45% 10%, white, transparent),
-        radial-gradient(1.5px 1.5px at 55% 30%, white, transparent),
-        radial-gradient(1.5px 1.5px at 65% 5%, white, transparent),
-        radial-gradient(1.5px 1.5px at 75% 20%, white, transparent),
-        radial-gradient(1.5px 1.5px at 85% 10%, white, transparent),
-        radial-gradient(1.5px 1.5px at 95% 25%, white, transparent),
-        radial-gradient(1.5px 1.5px at 10% 40%, white, transparent),
-        radial-gradient(1.5px 1.5px at 20% 55%, white, transparent),
-        radial-gradient(1.5px 1.5px at 30% 35%, white, transparent),
-        radial-gradient(1.5px 1.5px at 40% 60%, white, transparent),
-        radial-gradient(1.5px 1.5px at 50% 45%, white, transparent),
-        radial-gradient(1.5px 1.5px at 60% 70%, white, transparent),
-        radial-gradient(1.5px 1.5px at 70% 50%, white, transparent),
-        radial-gradient(1.5px 1.5px at 80% 65%, white, transparent),
-        radial-gradient(1.5px 1.5px at 90% 40%, white, transparent),
-        /* Doubling stripes for density */
-        radial-gradient(1px 1px at 3% 12%, white, transparent),
-        radial-gradient(1px 1px at 18% 28%, white, transparent),
-        radial-gradient(1px 1px at 38% 8%, white, transparent),
-        radial-gradient(1px 1px at 58% 18%, white, transparent),
-        radial-gradient(1px 1px at 78% 28%, white, transparent),
-        radial-gradient(1px 1px at 98% 8%, white, transparent);
-    background-size: 25% 25%;
-    /* Répétition plus fréquente */
-    animation: twinkle 5s ease-in-out infinite;
-    opacity: 0.9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image:
+    radial-gradient(1.5px 1.5px at 5% 5%, white, transparent),
+    radial-gradient(1.5px 1.5px at 15% 15%, white, transparent),
+    radial-gradient(1.5px 1.5px at 25% 5%, white, transparent),
+    radial-gradient(1.5px 1.5px at 35% 25%, white, transparent),
+    radial-gradient(1.5px 1.5px at 45% 10%, white, transparent),
+    radial-gradient(1.5px 1.5px at 55% 30%, white, transparent),
+    radial-gradient(1.5px 1.5px at 65% 5%, white, transparent),
+    radial-gradient(1.5px 1.5px at 75% 20%, white, transparent),
+    radial-gradient(1.5px 1.5px at 85% 10%, white, transparent),
+    radial-gradient(1.5px 1.5px at 95% 25%, white, transparent),
+    radial-gradient(1.5px 1.5px at 10% 40%, white, transparent),
+    radial-gradient(1.5px 1.5px at 20% 55%, white, transparent),
+    radial-gradient(1.5px 1.5px at 30% 35%, white, transparent),
+    radial-gradient(1.5px 1.5px at 40% 60%, white, transparent),
+    radial-gradient(1.5px 1.5px at 50% 45%, white, transparent),
+    radial-gradient(1.5px 1.5px at 60% 70%, white, transparent),
+    radial-gradient(1.5px 1.5px at 70% 50%, white, transparent),
+    radial-gradient(1.5px 1.5px at 80% 65%, white, transparent),
+    radial-gradient(1.5px 1.5px at 90% 40%, white, transparent),
+    radial-gradient(1px 1px at 3% 12%, white, transparent),
+    radial-gradient(1px 1px at 18% 28%, white, transparent),
+    radial-gradient(1px 1px at 38% 8%, white, transparent),
+    radial-gradient(1px 1px at 58% 18%, white, transparent),
+    radial-gradient(1px 1px at 78% 28%, white, transparent),
+    radial-gradient(1px 1px at 98% 8%, white, transparent);
+  background-size: 25% 25%;
+  animation: twinkle 5s ease-in-out infinite;
+  opacity: 0.9;
 }
-
-/* Étoiles scintillantes - couche 2 (POUSSIÈRE D'ÉTOILES INFINIE) */
 .stars-layer-2 {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-image:
-        radial-gradient(1px 1px at 2% 2%, rgba(200, 220, 255, 0.7), transparent),
-        radial-gradient(1px 1px at 12% 8%, rgba(200, 220, 255, 0.7), transparent),
-        radial-gradient(1px 1px at 22% 18%, rgba(200, 220, 255, 0.7), transparent),
-        radial-gradient(1px 1px at 32% 6%, rgba(200, 220, 255, 0.7), transparent),
-        radial-gradient(1px 1px at 42% 28%, rgba(200, 220, 255, 0.7), transparent),
-        radial-gradient(1px 1px at 52% 12%, rgba(200, 220, 255, 0.7), transparent),
-        radial-gradient(1px 1px at 62% 38%, rgba(200, 220, 255, 0.7), transparent),
-        radial-gradient(1px 1px at 72% 4%, rgba(200, 220, 255, 0.7), transparent),
-        radial-gradient(1px 1px at 82% 22%, rgba(200, 220, 255, 0.7), transparent),
-        radial-gradient(1px 1px at 92% 10%, rgba(200, 220, 255, 0.7), transparent),
-        /* More filler stars */
-        radial-gradient(0.5px 0.5px at 15% 15%, rgba(255, 255, 255, 0.5), transparent),
-        radial-gradient(0.5px 0.5px at 35% 35%, rgba(255, 255, 255, 0.5), transparent),
-        radial-gradient(0.5px 0.5px at 55% 55%, rgba(255, 255, 255, 0.5), transparent),
-        radial-gradient(0.5px 0.5px at 75% 75%, rgba(255, 255, 255, 0.5), transparent),
-        radial-gradient(0.5px 0.5px at 95% 95%, rgba(255, 255, 255, 0.5), transparent);
-    background-size: 15% 15%;
-    /* Répétition extrême */
-    animation: twinkle 3s ease-in-out infinite 1.5s;
-    opacity: 0.7;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image:
+    radial-gradient(1px 1px at 2% 2%, rgba(200, 220, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 12% 8%, rgba(200, 220, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 22% 18%, rgba(200, 220, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 32% 6%, rgba(200, 220, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 42% 28%, rgba(200, 220, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 52% 12%, rgba(200, 220, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 62% 38%, rgba(200, 220, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 72% 4%, rgba(200, 220, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 82% 22%, rgba(200, 220, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 92% 10%, rgba(200, 220, 255, 0.7), transparent),
+    radial-gradient(
+      0.5px 0.5px at 15% 15%,
+      rgba(255, 255, 255, 0.5),
+      transparent
+    ),
+    radial-gradient(
+      0.5px 0.5px at 35% 35%,
+      rgba(255, 255, 255, 0.5),
+      transparent
+    ),
+    radial-gradient(
+      0.5px 0.5px at 55% 55%,
+      rgba(255, 255, 255, 0.5),
+      transparent
+    ),
+    radial-gradient(
+      0.5px 0.5px at 75% 75%,
+      rgba(255, 255, 255, 0.5),
+      transparent
+    ),
+    radial-gradient(
+      0.5px 0.5px at 95% 95%,
+      rgba(255, 255, 255, 0.5),
+      transparent
+    );
+  background-size: 15% 15%;
+  animation: twinkle 3s ease-in-out infinite 1.5s;
+  opacity: 0.7;
 }
-
-/* Étoiles brillantes (effet sparkle - BRILLANCE ACCENTUÉE) */
 .stars-sparkle {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-image:
-        radial-gradient(3px 3px at 40% 30%, white, transparent),
-        radial-gradient(2.5px 2.5px at 10% 80%, white, transparent),
-        radial-gradient(2px 2px at 90% 10%, white, transparent),
-        radial-gradient(2.5px 2.5px at 30% 60%, white, transparent),
-        radial-gradient(3px 3px at 70% 40%, white, transparent),
-        radial-gradient(2px 2px at 50% 50%, white, transparent);
-    background-size: 60% 60%;
-    animation: twinkle 2s ease-in-out infinite 0.2s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image:
+    radial-gradient(3px 3px at 40% 30%, white, transparent),
+    radial-gradient(2.5px 2.5px at 10% 80%, white, transparent),
+    radial-gradient(2px 2px at 90% 10%, white, transparent),
+    radial-gradient(2.5px 2.5px at 30% 60%, white, transparent),
+    radial-gradient(3px 3px at 70% 40%, white, transparent),
+    radial-gradient(2px 2px at 50% 50%, white, transparent);
+  background-size: 60% 60%;
+  animation: twinkle 2s ease-in-out infinite 0.2s;
 }
-
-/* Canvas Background - Updated to z-index -5 */
 #starry-night {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    /* Brought forward to be visible over background */
-    background: transparent;
-    pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: transparent;
+  pointer-events: none;
 }
-
-/* Content Overlay */
 .content {
-    text-align: center;
-    z-index: 1;
-    padding: 2rem;
-    margin: 15vh auto;
-    /* Center vertically roughly */
-    backdrop-filter: blur(2px);
-    /* Subtle blur to separate text from stars */
-    border: 1px solid rgba(192, 192, 192, 0.2);
-    border-radius: 15px;
-    background: rgba(0, 0, 0, 0.3);
-    box-shadow: 0 0 30px rgba(192, 192, 192, 0.1);
-    max-width: 600px;
-    width: 90%;
-    animation: fadeIn 2s ease-out;
+  text-align: center;
+  z-index: 1;
+  padding: 2rem;
+  margin: 15vh auto;
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(192, 192, 192, 0.2);
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 30px rgba(192, 192, 192, 0.1);
+  max-width: 600px;
+  width: 90%;
+  animation: fadeIn 2s ease-out;
 }
-
-/* Specific Fix for RSVP Container - Reset for static nav */
 .rsvp-container {
-    margin: 3rem auto !important;
-    max-width: 600px;
+  margin: 3rem auto !important;
+  max-width: 600px;
 }
-
 header h1 {
-    font-family: 'Remington', cursive;
-    font-size: 4rem;
-    color: var(--text-silver);
-    margin-bottom: 0.5rem;
-    text-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
-    line-height: 1.2;
+  font-family: "Remington", cursive;
+  font-size: 4rem;
+  color: var(--text-silver);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
+  line-height: 1.2;
 }
-
 .subtitle {
-    font-size: 1.2rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 2rem;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2rem;
 }
-
 .intro h2 {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
-
 .date {
-    font-size: 1.5rem;
-    font-weight: 300;
-    margin-top: 1rem;
-    padding: 0.5rem 2rem;
-    border-top: 1px solid var(--text-silver);
-    border-bottom: 1px solid var(--text-silver);
-    display: inline-block;
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-top: 1rem;
+  padding: 0.5rem 2rem;
+  border-top: 1px solid var(--text-silver);
+  border-bottom: 1px solid var(--text-silver);
+  display: inline-block;
 }
-
 footer {
-    margin-top: 3rem;
-    font-size: 0.8rem;
-    opacity: 0.7;
+  margin-top: 3rem;
+  font-size: 0.8rem;
+  opacity: 0.7;
 }
-
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-
-/* Mobile Responsiveness */
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 2.8rem;
-    }
-
-    .content {
-        width: 95%;
-        padding: 1.5rem;
-    }
+  header h1 {
+    font-size: 2.8rem;
+  }
+  .content {
+    width: 95%;
+    padding: 1.5rem;
+  }
 }
-
-/* Form Styles */
 .rsvp-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 2rem;
-    text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  text-align: left;
 }
-
 .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
-
 .form-group input,
 .form-group textarea {
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid var(--text-silver);
-    color: var(--text-primary);
-    font-family: var(--font-body);
-    border-radius: 5px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--text-silver);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  border-radius: 5px;
 }
-
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: rgba(192, 192, 192, 0.7);
+  color: rgba(192, 192, 192, 0.7);
 }
-
 .radio-group label {
-    display: block;
-    margin-bottom: 0.2rem;
-    cursor: pointer;
+  display: block;
+  margin-bottom: 0.2rem;
+  cursor: pointer;
 }
-
 .btn {
-    padding: 12px 30px;
-    background: transparent;
-    border: 1px solid var(--text-silver);
-    color: var(--text-primary);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: var(--font-heading);
-    margin-top: 1rem;
-    text-decoration: none;
-    display: inline-block;
+  padding: 12px 30px;
+  background: transparent;
+  border: 1px solid var(--text-silver);
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-heading);
+  margin-top: 1rem;
+  text-decoration: none;
+  display: inline-block;
 }
-
 .btn:hover {
-    background: var(--text-silver);
-    color: var(--bg-color);
-    box-shadow: 0 0 20px rgba(192, 192, 192, 0.4);
+  background: var(--text-silver);
+  color: var(--bg-color);
+  box-shadow: 0 0 20px rgba(192, 192, 192, 0.4);
 }
-
 .link-back {
-    display: block;
-    margin-top: 1rem;
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 0.9rem;
-    text-align: center;
+  display: block;
+  margin-top: 1rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  text-align: center;
 }
-
 .link-back:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
-
-/* Navigation */
 .main-nav {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    /* Semi-transparent background */
-    backdrop-filter: blur(5px);
-    padding: 1rem 0;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  padding: 1rem 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-
-/* Static Navigation for inner pages */
 .main-nav.static-nav {
-    position: relative;
-    background: rgba(0, 0, 0, 0.8);
-    /* Darker background for readability */
+  position: relative;
+  background: rgba(0, 0, 0, 0.8);
 }
-
 .nav-links {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    transition: all 0.3s ease;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  transition: all 0.3s ease;
 }
-
 .nav-links li a {
-    color: var(--text-silver);
-    text-decoration: none;
-    font-family: var(--font-heading);
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: color 0.3s, text-shadow 0.3s;
+  color: var(--text-silver);
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition:
+    color 0.3s,
+    text-shadow 0.3s;
 }
-
 .nav-links li a:hover {
-    color: #fff;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
-
 .btn-nav {
-    border: 1px solid var(--text-silver);
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+  border: 1px solid var(--text-silver);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
 }
-
 .btn-nav:hover {
-    background: var(--text-silver);
-    color: #000 !important;
+  background: var(--text-silver);
+  color: #000 !important;
 }
-
-/* Hamburger Menu (Hidden on Desktop) */
 .menu-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 1001;
-    /* Above mobile menu overlay */
-    padding: 0;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 0;
 }
-
 .menu-toggle .bar {
-    width: 100%;
-    height: 3px;
-    background-color: var(--text-silver);
-    border-radius: 3px;
-    transition: all 0.3s ease-in-out;
+  width: 100%;
+  height: 3px;
+  background-color: var(--text-silver);
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
 }
-
-/* Mobile Responsiveness for Navigation */
 @media (max-width: 768px) {
-    .main-nav {
-        padding: 1rem 1.5rem;
-        display: flex;
-        justify-content: flex-end;
-        /* Place hamburger on the right */
-        align-items: center;
-        background: transparent;
-        /* Clean header on mobile */
-    }
-
-    .menu-toggle {
-        display: flex;
-    }
-
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        /* Hidden by default */
-        width: 100%;
-        /* Fullscreen on very small screens or 80%? Let's go fullscreen for premium feel */
-        height: 100vh;
-        background: rgba(5, 5, 5, 0.95);
-        /* Deep dark background */
-        backdrop-filter: blur(10px);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2.5rem;
-        z-index: 999;
-    }
-
-    .nav-links.active {
-        right: 0;
-    }
-
-    .nav-links li {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.3s ease;
-    }
-
-    .nav-links.active li {
-        opacity: 1;
-        transform: translateY(0);
-        /* Staggered animation for items */
-    }
-
-    .nav-links.active li:nth-child(1) {
-        transition-delay: 0.1s;
-    }
-
-    .nav-links.active li:nth-child(2) {
-        transition-delay: 0.2s;
-    }
-
-    .nav-links.active li:nth-child(3) {
-        transition-delay: 0.3s;
-    }
-
-    .nav-links.active li:nth-child(4) {
-        transition-delay: 0.4s;
-    }
-
-    .nav-links.active li:nth-child(5) {
-        transition-delay: 0.5s;
-    }
-
-    .nav-links.active li:nth-child(6) {
-        transition-delay: 0.6s;
-    }
-
-    .nav-links li a {
-        font-size: 1.5rem;
-    }
-
-    /* Hamburger Animation */
-    .menu-toggle.active .bar:nth-child(1) {
-        transform: translateY(9px) rotate(45deg);
-    }
-
-    .menu-toggle.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .menu-toggle.active .bar:nth-child(3) {
-        transform: translateY(-9px) rotate(-45deg);
-    }
-
-    body.no-scroll {
-        overflow: hidden;
-    }
+  .main-nav {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .menu-toggle {
+    display: flex;
+  }
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    z-index: 999;
+  }
+  .nav-links.active {
+    right: 0;
+  }
+  .nav-links li {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+  }
+  .nav-links.active li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .nav-links.active li:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+  .nav-links.active li:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+  .nav-links.active li:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+  .nav-links.active li:nth-child(4) {
+    transition-delay: 0.4s;
+  }
+  .nav-links.active li:nth-child(5) {
+    transition-delay: 0.5s;
+  }
+  .nav-links.active li:nth-child(6) {
+    transition-delay: 0.6s;
+  }
+  .nav-links li a {
+    font-size: 1.5rem;
+  }
+  .menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+  body.no-scroll {
+    overflow: hidden;
+  }
 }

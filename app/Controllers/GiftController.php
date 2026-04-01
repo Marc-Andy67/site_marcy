@@ -91,6 +91,6 @@ class GiftController extends Controller
 
         // Notify Admins
         $adminBody = "Nouveau don promis par {$data['name']} ({$data['email']}) d'un montant de {$data['amount']} €.<br>Message: {$data['message']}";
-        $mailer->send('marcandy.p@hotmail.com', 'Nouveau Don !', $adminBody);
+        $mailer->send('marcy.pivert@gmail.com', 'Nouveau Don !', $adminBody);
     }
 }
