@@ -117,6 +117,7 @@ class AdminController extends Controller
             $bodyContent = "
                 <p>Nous sommes très heureux de vous compter parmi nous pour célébrer notre mariage 🎉<br>
                 Votre réponse via le formulaire a bien été enregistrée, et nous vous remercions sincèrement d’avoir confirmé votre présence.</p>
+                <p>Nous en profitons pour vous rappeler le dress code de l'évènement : tenue noire, chic et élégante.Les couleurs ne sont pas acceptés.<br> Merci de bien vouloir respecter ce thème</p>
                 {$companionsBlock}
                 <p>Nous avons hâte de partager ce moment unique avec vous.<br>
                 N'hésitez pas à consulter régulièrement le site pour découvrir le programme et les détails du jour J.</p>
